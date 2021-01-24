@@ -45,7 +45,7 @@ const WorkoutSchema = new Schema({
 }
 );
 
-
+//creates the total duration from total of exercises without needing a key value for it
 WorkoutSchema.virtual("totalDuration").get(function () {
 return this.exercises.reduce((total, exercise) => {
   return total + exercise.duration;

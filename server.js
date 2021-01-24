@@ -14,13 +14,15 @@ app.use(express.static("public"));
 require("./routes/htmlroutes.js")(app);
 require("./routes/apiroutes.js")(app);
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/workout";
-mongoose.connect(MONGODB_URI,{  
-    useNewUrlParser:true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify:false
-})
+mongoose.connect(
+    rocess.env.MONGODB_URI || "mongodb://localhost/workout",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
+    }
+  );
 
 app.listen(PORT,function(){ 
     console.log(`App listening on Port ${PORT}`);
