@@ -11,7 +11,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(express.static("public"));
 
-//require("./routes/htmlroutes.js")(app);
+require("./routes/htmlroutes.js")(app);
 require("./routes/apiroutes.js")(app);
 
 mongoose.connect(
@@ -27,20 +27,3 @@ mongoose.connect(
 app.listen(PORT,function(){ 
     console.log(`App listening on Port ${PORT}`);
 });
-
-var path = require("path");
-
-module.exports = function(app){ 
-  app.get("/exercise",function (req,res){   
-      res.sendFile(path.join(__dirname,"../public/exercise.html"));
-  });
-
-  app.get("/",function(req,res){    
-      res.sendFile(path.join(__dirname,"../public/index.html"));
-  });
-
-  app.get("/stats",function(req,res){   
-      res.sendFile(path.join(__dirname,"../public/stats.html"));
-  });
-
-}
